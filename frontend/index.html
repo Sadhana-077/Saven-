@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saven</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+    <div class="brand-area">
+
+        <div class="logo-area">
+            <img src="logo.png" alt="Saven Logo">
+        </div>
+
+        <div class="brand-name">
+            SAVEN
+        </div>
+
+    </div>
+
+    <button id="connectBtn" class="connect-btn">
+        Connect Wallet
+    </button>
+
+</header>
+
+
+    <main class="wallet-container">
+
+        <!-- WALLET ADDRESS -->
+        <section class="wallet-section">
+
+            <p class="label">SMART CONTRACT WALLET</p>
+
+            <div class="address-row">
+
+                <span id="contractAddress">
+                    0x04788Cb52FB35597F2E2561fa6CDF8Ac6463B551
+                </span>
+
+                <button
+                    onclick="copyContractAddress()"
+                    class="copy-btn">
+                    Copy
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- BALANCE -->
+        <section class="balance-section">
+
+            <p class="balance-label">
+                TOTAL BALANCE
+            </p>
+
+            <div class="balance-wrapper">
+
+                <h1 id="balance">
+                    0.00000
+                </h1>
+
+                <span>ETH</span>
+
+            </div>
+
+            <div class="network">
+                ● Sepolia Network
+            </div>
+
+        </section>
+
+
+        <!-- ACTION BUTTONS -->
+        <section class="actions">
+
+            <button id="sendBtn" class="action-btn send">
+
+                <span class="action-icon">↗</span>
+
+                <div>
+                    <strong>Send</strong>
+                    <small>Send ETH</small>
+                </div>
+
+            </button>
+
+
+            <button id="receiveBtn" class="action-btn receive">
+
+                <span class="action-icon">↓</span>
+
+                <div>
+                    <strong>Receive</strong>
+                    <small>Receive ETH</small>
+                </div>
+
+            </button>
+
+        </section>
+
+
+        <!-- SEND PANEL -->
+        <section id="sendSection" class="transaction-panel">
+
+            <div class="panel-title">
+
+                <div>
+                    <p>TRANSACTION</p>
+                    <h2>Send ETH</h2>
+                </div>
+
+                <button
+                    class="close-btn"
+                    onclick="closePanels()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label>Recipient Address</label>
+
+            <input
+                type="text"
+                id="recipient"
+                placeholder="0x..."
+            >
+
+
+            <label>Amount</label>
+
+            <div class="amount-box">
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="0.00000"
+                    step="0.000001"
+                    min="0"
+                >
+
+                <span>ETH</span>
+
+            </div>
+
+
+            <button
+                id="executeSendBtn"
+                class="execute-btn">
+
+                Send ETH ↗
+
+            </button>
+
+        </section>
+
+
+        <!-- RECEIVE PANEL -->
+        <section id="receiveSection" class="transaction-panel">
+
+            <div class="panel-title">
+
+                <div>
+                    <p>DEPOSIT</p>
+                    <h2>Receive ETH</h2>
+                </div>
+
+                <button
+                    class="close-btn"
+                    onclick="closePanels()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <p class="receive-description">
+                Send Sepolia ETH to your smart contract wallet.
+            </p>
+
+
+            <div class="receive-address">
+
+                <span id="receiveAddress">
+                    0x04788Cb52FB35597F2E2561fa6CDF8Ac6463B551
+                </span>
+
+                <button
+                    onclick="copyReceiveAddress()"
+                    class="copy-btn">
+
+                    Copy
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSACTION HISTORY -->
+        <section class="history-section">
+
+            <div class="history-heading">
+
+                <div>
+                    <p class="label">ACTIVITY</p>
+                    <h2>Transaction History</h2>
+                </div>
+
+                <button
+                    onclick="clearHistory()"
+                    class="clear-btn">
+
+                    Clear
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="transactionHistory"
+                class="transaction-list">
+
+                <div class="empty-history">
+
+                    <div class="empty-icon">
+                        ↕
+                    </div>
+
+                    <h3>No transactions yet</h3>
+
+                    <p>
+                        Your transactions will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div id="status" class="status"></div>
+
+    </main>
+
+
+    <footer>
+        SAVEN • Smart Contract Wallet
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
