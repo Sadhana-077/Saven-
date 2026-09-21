@@ -2,13 +2,8 @@ import { network } from "hardhat";
 
 const { ethers } = await network.connect();
 
-const [owner] = await ethers.getSigners();
+const implementation = await ethers.deployContract("SavenWallet");
 
-const wallet = await ethers.deployContract("SmartContractWallet", [
-  owner.address,
-]);
+await implementation.waitForDeployment();
 
-await wallet.waitForDeployment();
-
-console.log("Owner EOA:", owner.address);
-console.log("Smart Contract Wallet:", await wallet.getAddress());
+console.log("SavenWallet Implementation:", await implementation.getAddress());
